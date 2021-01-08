@@ -15,3 +15,7 @@ kubectl apply -f metalLB.yaml
 
 # obtenir l'IP de minikube
 kubectl get node -o=custom-columns='DATA:status.addresses[0].address' | sed -n 2p
+
+# NGINX
+docker build -t my_nginx ./srcs/Nginx #CHANGER LES REDIRECTIONS DE LA CONF NGINX
+kubectl apply -f nginx.yaml
