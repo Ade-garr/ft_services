@@ -2,6 +2,8 @@ FROM alpine:latest
 
 MAINTAINER ade-garr
 
+EXPOSE 3306
+
 RUN apk update
 RUN apk add openrc
 RUN rc-status

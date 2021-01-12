@@ -19,7 +19,13 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 kubectl apply -f metalLB.yaml 
 
 # NGINX
-docker build -t nginx ./srcs/Nginx #CHANGER LES REDIRECTIONS DE LA CONF NGINX
+docker build -t nginx ./srcs/nginx #CHANGER LES REDIRECTIONS DE LA CONF NGINX + reverse
 kubectl apply -f nginx.yaml
 
+# mySQL
+docker build -t mysql ./srcs/mySQL
+kubectl apply -f mySQL.yaml
+
 # phpMyAdmin
+docker build -t phpmyadmin ./srcs/phpMyAdmin #CHANGER LES REDIRECTIONS DE LA CONF NGINX + reverse
+kubectl apply -f phpMyAdmin.yaml
