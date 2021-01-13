@@ -156,3 +156,4 @@ $cfg['SaveDir'] = '';
  */
 
 $cfg['TempDir'] = '/tmp';
+#$cfg['PmaAbsoluteUri'] = '/';
