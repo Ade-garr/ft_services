@@ -29,3 +29,8 @@ kubectl apply -f mySQL.yaml
 # phpMyAdmin
 docker build -t phpmyadmin ./srcs/phpMyAdmin #CHANGER LES REDIRECTIONS DE LA CONF NGINX + reverse
 kubectl apply -f phpMyAdmin.yaml
+
+# UPDATER UN CONTAINER
+kubectl delete deployment.apps/mysql-deployment && kubectl delete service/mysql && docker build -t mysql ./srcs/mySQL && kubectl apply -f mySQL.yaml
+kubectl delete deployment.apps/nginx-deployment && kubectl delete service/nginx && docker build -t nginx ./srcs/nginx && kubectl apply -f nginx.yaml
+kubectl delete deployment.apps/phpmyadmin-deployment && kubectl delete service/phpmyadmin && docker build -t phpmyadmin ./srcs/phpMyAdmin && kubectl apply -f phpMyAdmin.yaml
