@@ -19,18 +19,24 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 kubectl apply -f metalLB.yaml 
 
 # NGINX
-docker build -t nginx ./srcs/nginx #CHANGER LES REDIRECTIONS DE LA CONF NGINX + reverse
+docker build -t nginx ./srcs/nginx #verifier /phpmyadmin/
 kubectl apply -f nginx.yaml
 
 # mySQL
-docker build -t mysql ./srcs/mySQL
+docker build -t mysql ./srcs/mySQL # gerer la database et les users wordpress
 kubectl apply -f mySQL.yaml
 
 # phpMyAdmin
-docker build -t phpmyadmin ./srcs/phpMyAdmin #CHANGER LES REDIRECTIONS DE LA CONF NGINX + reverse
+docker build -t phpmyadmin ./srcs/phpMyAdmin
 kubectl apply -f phpMyAdmin.yaml
+
+#wordpress
+docker build -t wordpress ./srcs/WordPress
+kubectl apply -f WordPress.yaml
+
 
 # UPDATER UN CONTAINER
 kubectl delete deployment.apps/mysql-deployment && kubectl delete service/mysql && docker build -t mysql ./srcs/mySQL && kubectl apply -f mySQL.yaml
 kubectl delete deployment.apps/nginx-deployment && kubectl delete service/nginx && docker build -t nginx ./srcs/nginx && kubectl apply -f nginx.yaml
 kubectl delete deployment.apps/phpmyadmin-deployment && kubectl delete service/phpmyadmin && docker build -t phpmyadmin ./srcs/phpMyAdmin && kubectl apply -f phpMyAdmin.yaml
+kubectl delete deployment.apps/wordpress-deployment && kubectl delete service/wordpress && docker build -t wordpress ./srcs/WordPress && kubectl apply -f WordPress.yaml
