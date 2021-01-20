@@ -35,6 +35,9 @@ docker build -t wordpress ./srcs/WordPress
 kubectl apply -f WordPress.yaml
 
 
+# TODO
+- livenessprobe
+
 # UPDATER UN CONTAINER
 kubectl delete deployment.apps/mysql-deployment && kubectl delete service/mysql && docker build -t mysql ./srcs/mySQL && kubectl apply -f mySQL.yaml
 kubectl delete deployment.apps/nginx-deployment && kubectl delete service/nginx && docker build -t nginx ./srcs/nginx && kubectl apply -f nginx.yaml
