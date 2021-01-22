@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mysql_install_db --user=mysql --datadir=/var/lib/mysql
 sed -i 's/skip-networking/#skip-networking/g' /etc/my.cnf.d/mariadb-server.cnf
 rc-service mariadb start
 
