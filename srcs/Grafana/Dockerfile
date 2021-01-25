@@ -5,12 +5,11 @@ MAINTAINER ade-garr
 EXPOSE 3000
 
 RUN apk update
+RUN apk add grafana --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add grafana-openrc --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 RUN apk add openrc
-RUN rc-status
+RUN apk add syslog-ng
 RUN touch /run/openrc/softlevel
+RUN rc-status
 
-wget https://dl.grafana.com/oss/release/grafana-7.3.7.linux-amd64.tar.gz
-tar -zxvf grafana-7.3.7.linux-amd64.tar.gz
-
-
-#MD ["sh", "/start/start.sh"]
+ENTRYPOINT rc-service grafana start

@@ -11,8 +11,9 @@ RUN apk add telegraf-openrc --repository=http://dl-cdn.alpinelinux.org/alpine/ed
 
 RUN rm /etc/telegraf.conf
 COPY srcs/telegraf.conf /etc/telegraf.conf
-#RUN apk add openrc
-#RUN rc-status
-#RUN touch /run/openrc/softlevel
+RUN apk add openrc
+RUN rc-status
+RUN touch /run/openrc/softlevel
+COPY srcs/start.sh ./start/start.sh
 
-#ENTRYPOINT influxd
+CMD ["sh", "/start/start.sh"]
