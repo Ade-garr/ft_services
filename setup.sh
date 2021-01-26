@@ -30,16 +30,27 @@ kubectl apply -f mySQL.yaml
 docker build -t phpmyadmin ./srcs/phpMyAdmin
 kubectl apply -f phpMyAdmin.yaml
 
-#wordpress
+# Wordpress
 docker build -t wordpress ./srcs/WordPress
 kubectl apply -f WordPress.yaml
 
+# InfluxDB
+docker build -t influxdb ./srcs/InfluxDB
+kubectl apply -f InfluxDB.yaml
+
+# Grafana
+docker build -t grafana ./srcs/Grafana
+kubectl apply -f Grafana.yaml
+
 # TODO
 - livenessprobe
+- type recreate ?
+- changer les mots de passe
 
 # UPDATER UN CONTAINER
 kubectl delete deployment.apps/mysql-deployment && kubectl delete service/mysql && docker build -t mysql ./srcs/mySQL && kubectl apply -f mySQL.yaml
 kubectl delete deployment.apps/nginx-deployment && kubectl delete service/nginx && docker build -t nginx ./srcs/nginx && kubectl apply -f nginx.yaml
 kubectl delete deployment.apps/phpmyadmin-deployment && kubectl delete service/phpmyadmin && docker build -t phpmyadmin ./srcs/phpMyAdmin && kubectl apply -f phpMyAdmin.yaml
 kubectl delete deployment.apps/wordpress-deployment && kubectl delete service/wordpress && docker build -t wordpress ./srcs/WordPress && kubectl apply -f WordPress.yaml
-kubectl delete deployment.apps/grafana-deployment && kubectl delete service/grafana && docker build -t grafana ./srcs/Grafana
+kubectl delete deployment.apps/grafana-deployment && kubectl delete service/grafana && docker build -t grafana ./srcs/Grafana && kubectl apply -f Grafana.yaml
+kubectl delete deployment.apps/influxdb-deployment && kubectl delete service/influxdb && docker build -t influxdb ./srcs/InfluxDB && kubectl apply -f InfluxDB.yaml

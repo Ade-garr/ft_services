@@ -14,5 +14,4 @@ RUN touch /run/openrc/softlevel
 RUN sed -i '/^cfg:server.http_addr/d' etc/conf.d/grafana
 RUN rc-status
 
-ENTRYPOINT sh
-#ENTRYPOINT rc-service grafana start
+ENTRYPOINT rc-service grafana start && tail -f /dev/null
