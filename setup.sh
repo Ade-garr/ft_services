@@ -42,6 +42,10 @@ kubectl apply -f InfluxDB.yaml
 docker build -t grafana ./srcs/Grafana
 kubectl apply -f Grafana.yaml
 
+# FTPS
+docker build -t ftps ./srcs/FTPS
+kubectl apply -f FTPS.yaml
+
 # TODO
 - ftps
 - livenessprobe
@@ -57,3 +61,4 @@ kubectl delete deployment.apps/phpmyadmin-deployment && kubectl delete service/p
 kubectl delete deployment.apps/wordpress-deployment && kubectl delete service/wordpress && docker build -t wordpress ./srcs/WordPress && kubectl apply -f WordPress.yaml
 kubectl delete deployment.apps/grafana-deployment && kubectl delete service/grafana && docker build -t grafana ./srcs/Grafana && kubectl apply -f Grafana.yaml
 kubectl delete deployment.apps/influxdb-deployment && kubectl delete service/influxdb && docker build -t influxdb ./srcs/InfluxDB && kubectl apply -f InfluxDB.yaml
+kubectl delete deployment.apps/ftps-deployment && kubectl delete service/ftps && docker build -t ftps ./srcs/FTPS && kubectl apply -f FTPS.yaml
