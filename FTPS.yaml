@@ -18,6 +18,14 @@ spec:
       - name: ftps
         image: ftps
         imagePullPolicy: Never
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - rc-service vsftpd status
+          initialDelaySeconds: 10
+          periodSeconds: 10
         ports:
         - containerPort: 21
           name: ftps

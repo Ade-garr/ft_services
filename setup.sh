@@ -47,12 +47,9 @@ docker build -t ftps ./srcs/FTPS
 kubectl apply -f FTPS.yaml
 
 # TODO
-- ftps
 - livenessprobe
-- type recreate ?
 - changer les mots de passe
 - faire les dashboards + enregistrer et importer dans l image
-- ajouter le service account influxdb ?
 
 # UPDATER UN CONTAINER
 kubectl delete deployment.apps/mysql-deployment && kubectl delete service/mysql && docker build -t mysql ./srcs/mySQL && kubectl apply -f mySQL.yaml
