@@ -45,6 +45,14 @@ spec:
       - name: mysql
         image: mysql
         imagePullPolicy: Never
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - rc-service mariadb status
+          initialDelaySeconds: 10
+          periodSeconds: 10
         ports:
         - containerPort: 3306
         volumeMounts:

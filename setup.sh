@@ -1,5 +1,5 @@
 # si VM vierge, pour regler les problemes de permission
-sudo usermod -aG docker user42; newgrp doker
+sudo usermod -aG docker user42; newgrp docker
 # obtenir l'IP de minikube
 kubectl get node -o=custom-columns='DATA:status.addresses[0].address' | sed -n 2p
 
@@ -47,8 +47,7 @@ docker build -t ftps ./srcs/FTPS
 kubectl apply -f FTPS.yaml
 
 # TODO
-- livenessprobe
-- changer les mots de passe
+- kill ftps?
 - faire les dashboards + enregistrer et importer dans l image
 
 # UPDATER UN CONTAINER

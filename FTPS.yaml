@@ -23,7 +23,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - rc-service vsftpd status
+            - ps -o user,comm,args | egrep -i "^root[ ]*vsftpd.*\.conf"
           initialDelaySeconds: 10
           periodSeconds: 10
         ports:

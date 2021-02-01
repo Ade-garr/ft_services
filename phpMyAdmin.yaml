@@ -18,6 +18,14 @@ spec:
       - name: phpmyadmin
         image: phpmyadmin
         imagePullPolicy: Never
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - rc-service nginx status && rc-service php-fpm7 status
+          initialDelaySeconds: 10
+          periodSeconds: 10
         ports:
         - containerPort: 5000
           name: https

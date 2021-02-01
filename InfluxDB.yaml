@@ -45,6 +45,14 @@ spec:
       - name: influxdb
         image: influxdb
         imagePullPolicy: Never
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - rc-service influxdb status && rc-service telegraf status
+          initialDelaySeconds: 10
+          periodSeconds: 10
         ports:
         - containerPort: 8086
         volumeMounts:
