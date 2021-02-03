@@ -6,7 +6,7 @@ kubectl get node -o=custom-columns='DATA:status.addresses[0].address' | sed -n 2
 # demarrage
 service nginx stop
 minikube delete
-minikube start
+minikube start --vm-driver=docker
 
 # paramétrage du docker
 eval $(minikube docker-env)
@@ -19,11 +19,11 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 kubectl apply -f metalLB.yaml 
 
 # NGINX
-docker build -t nginx ./srcs/nginx #verifier /phpmyadmin/
+docker build -t nginx ./srcs/nginx
 kubectl apply -f nginx.yaml
 
 # mySQL
-docker build -t mysql ./srcs/mySQL # gerer la database et les users wordpress
+docker build -t mysql ./srcs/mySQL
 kubectl apply -f mySQL.yaml
 
 # phpMyAdmin
@@ -47,7 +47,6 @@ docker build -t ftps ./srcs/FTPS
 kubectl apply -f FTPS.yaml
 
 # TODO
-- kill ftps?
 - faire les dashboards + enregistrer et importer dans l image
 
 # UPDATER UN CONTAINER
