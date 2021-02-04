@@ -19,4 +19,6 @@ COPY srcs/index.html /var/www/localhost/
 RUN rm /etc/nginx/conf.d/default.conf \
 && chown -R nginx:nginx /var/www/localhost/
 
-ENTRYPOINT rc-service nginx start && tail -f /dev/null
+COPY srcs/start.sh ./
+
+ENTRYPOINT sh start.sh

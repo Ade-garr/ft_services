@@ -1,5 +1,5 @@
 # si VM vierge, pour regler les problemes de permission
-sudo usermod -aG docker user42; newgrp docker
+#sudo usermod -aG docker user42; newgrp docker
 
 # demarrage
 minikube delete
