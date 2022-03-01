@@ -1,8 +1,8 @@
-### Welcome to my ft_services repository 👋
+# 📌 ft_services 📌
 
-⭐️ The goal of this subject was to discover Kubernetes and set up a cluster with several simple services (Wordpress, Phpmyadmin, Nginx, MySQL, Grafana, InfluxDB, FTPS server). Each service runs in a dedicated container built under Linux Alpine.
+The goal of this subject was to discover Kubernetes and set up a cluster with several simple services (Wordpress, Phpmyadmin, Nginx, MySQL, Grafana, InfluxDB, FTPS server). Each service runs in a dedicated container built under Linux Alpine.
 
-## 💡 Usage
+## 🔑 How to
 
 You first need to install minikube on your system ! Please refer to documentation : <br>
 https://kubernetes.io/fr/docs/tasks/tools/install-minikube/
